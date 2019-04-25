@@ -1,0 +1,8 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    packages:
+      - 'gcc'
+  roles:
+    - role: ansible-role-packages

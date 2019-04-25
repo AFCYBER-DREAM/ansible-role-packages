@@ -1,0 +1,4 @@
+---
+- name: Install yum based packages
+  yum:
+    name: "{{ packages }}"

@@ -1,0 +1,4 @@
+---
+- name: Install deb packages
+  apt:
+    name: "{{ packages }}"
