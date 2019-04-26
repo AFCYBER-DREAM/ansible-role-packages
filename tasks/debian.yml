@@ -1,4 +1,11 @@
 ---
+- name: Update all packages
+  apt:
+    update_cache: "yes"
+    name: "*"
+  when: packages.update_all is defined
+
 - name: Install deb packages
   apt:
-    name: "{{ packages }}"
+    update_cache: "{{ packages.debian.update_cache | default('yes') }}"
+    name: "{{ packages.debian }}"

@@ -3,40 +3,56 @@ ansible-role-packages
 
 Ansible role to install packages required by roles
 
-Requirements
-------------
+Using this role
+--------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+The role needs to be loaded dynamically during the plays and the dictionary of parameters to pass to the role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+This role will need to be provided with a dictionary of variables that have this structure.
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+```
+namespace_packages: # Namespace variable of the role
+  redhat: # Lower case version of os_family 
+    - package
+      # Package to be installed, include version if 
+      # required 
+    update_all: (true:false) # Perform full package update
+  debian:
+    - package
+    update_cache: (yes|no) # Force the update of the apt-cache 
+    update_all: (true:false)
+```
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
+Example import:
+```
+...
+- import_role:
+    name: ansible-role-packages
+  vars:
+    packages: "{{ namespace_packages }}"
+...
+```
+Example Vars:
 
-    - hosts: servers
-      roles:
-         - { role: ansible-role-packages, x: 42 }
-
+```
+test_packages:
+  redhat:
+    - '{{ yum packages }}
+  debian:
+    - {{ debian packages }}
+    update_cache: yes
+```
 License
 -------
 
 MIT
+
+Author Information
+------------------
+The Development Range Engineering, Architecture, and Modernization (DREAM) Team

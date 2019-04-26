@@ -12,3 +12,9 @@ def test_hosts_file(host):
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
+
+
+def test_installed_packages(host):
+    gcc = host.package('gcc')
+
+    assert gcc.is_installed

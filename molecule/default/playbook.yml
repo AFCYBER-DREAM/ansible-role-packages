@@ -3,6 +3,13 @@
   hosts: all
   vars:
     packages:
-      - 'gcc'
+      update_cache: 'yes'
+      debian:
+        - 'gcc=4:6.3.0-4'
+        - 'mysql-client'
+      update_all: true
+      redhat:
+        - 'gcc-4.8.5'
+        - 'mariadb'
   roles:
     - role: ansible-role-packages
