@@ -8,8 +8,12 @@ lint:
 platforms:
   - name: packages-centos
     image: centos:7
+    groups:
+      - centos
   - name: package-debian
     image: debian:latest
+    groups:
+      - debian
 provisioner:
   name: ansible
   lint:

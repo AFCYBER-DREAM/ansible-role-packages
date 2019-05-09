@@ -1,5 +1,5 @@
 ---
-- name: Converge
+- name: Debian Test
   hosts: all
   vars:
     packages:
@@ -7,9 +7,21 @@
       debian:
         - 'gcc=4:6.3.0-4'
         - 'mysql-client'
+  roles:
+    - role: ansible-role-packages
+
+- name: CentOS Test
+  hosts: all
+  vars:
+    packages:
       update_all: true
       redhat:
         - 'gcc-4.8.5'
         - 'mariadb'
+  roles:
+    - role: ansible-role-packages
+
+- name: CentOS Empty Package Test
+  hosts: all
   roles:
     - role: ansible-role-packages

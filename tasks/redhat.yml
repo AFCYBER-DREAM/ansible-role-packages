@@ -10,3 +10,5 @@
 - name: Install yum based packages
   yum:
     name: "{{ packages.redhat }}"
+  when:
+    - packages.redhat is defined

@@ -9,3 +9,5 @@
   apt:
     update_cache: "{{ packages.debian.update_cache | default('yes') }}"
     name: "{{ packages.debian }}"
+  when:
+    - packages.debian is defined
