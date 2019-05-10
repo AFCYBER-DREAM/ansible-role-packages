@@ -1,10 +1,5 @@
 ---
-- name: Include packages for RHEL Based flavors
-  include_tasks: redhat.yml
+- name: Include OS Specific Tasks
+  include_tasks: "{{ ansible_os_family | lower }}.yml"
   when:
-    ansible_os_family == "RedHat"
-
-- name: Include packages for Debian Based flavors
-  include_tasks: debian.yml
-  when:
-    ansible_os_family == "Debian"
+    - packages is defined

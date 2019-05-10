@@ -1,4 +1,14 @@
 ---
+- name: Bring all packages up to date
+  yum:
+    name: '*'
+    state: latest
+  when:
+    - packages.update_all is defined
+    - packages.update_all == True
+
 - name: Install yum based packages
   yum:
-    name: "{{ packages }}"
+    name: "{{ packages.redhat }}"
+  when:
+    - packages.redhat is defined

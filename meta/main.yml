@@ -7,12 +7,17 @@ galaxy_info:
   license:
     - MIT
 
-  min_ansible_version: 1.2
+  min_ansible_version: 2.4
 
   platforms:
     - name: EL
       versions:
-        - all
+        - 7
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+
 
   galaxy_tags: []
 

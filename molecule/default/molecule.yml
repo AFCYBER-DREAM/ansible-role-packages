@@ -6,12 +6,20 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: packages-centos
     image: centos:7
+    groups:
+      - centos
+  - name: package-debian
+    image: debian:latest
+    groups:
+      - debian
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
+    options:
+      x: ["403"]
 scenario:
   name: default
 verifier:
